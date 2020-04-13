@@ -82,4 +82,22 @@ public class Triangle {
         edges[2] = CEdge;
         return edges;
     }
+
+    public int[] getXs() {
+        int[] xVals = new int[3];
+        xVals[0] = A.getX();
+        xVals[1] = B.getX();
+        xVals[2] = C.getX();
+        return xVals;
+    }
+
+    public int[] getYs() {
+        int[] yVals = new int[3];
+        yVals[0] = A.getY();
+        yVals[1] = B.getY();
+        yVals[2] = C.getY();
+        return yVals;
+    }
 }
+
+

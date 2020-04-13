@@ -1,17 +1,19 @@
-public class Coordinate {
-    private float x;
-    private float y;
+import java.util.Objects;
 
-    public Coordinate(float x, float y) {
+public class Coordinate {
+    private int x;
+    private int y;
+
+    public Coordinate(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public float getX() {
+    public int getX() {
         return x;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 
@@ -41,5 +43,19 @@ public class Coordinate {
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Coordinate)) return false;
+
+        Coordinate coord = (Coordinate) o;
+        return (coord.getX() == x) && (coord.getY() == y);
+    }
+
+    @Override
+    public int hashcode() {
+        return Objects.hash(x, y);
     }
 }

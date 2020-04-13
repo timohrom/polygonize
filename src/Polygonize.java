@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -56,8 +57,7 @@ public class Polygonize {
         coords.add(c6);
         coords.add(c7);
 
-        generate();
-        drawTriangles(triangulize(coords));
+        Canvas.generate(triangulize(coords));
     }
 
     /**
@@ -83,34 +83,5 @@ public class Polygonize {
         }
 
         return triangles;
-    }
-
-    public static void generate() {
-        int height = 100;
-        int width = 100;
-        BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                int rgb = 0xFFFFFF; // white
-                image.setRGB(x, y, rgb);
-            }
-        }
-        try {
-            ImageIO.write(image, "png", new File("image.png"));
-        }
-        catch (IOException e) {
-            System.out.println("Something went wrong with loading the file");
-            e.printStackTrace();
-        }
-    }
-
-    public static void drawTriangles(List<Triangle> triangles) {
-        for (Triangle triangle : triangles) {
-            for (Edge edge : triangle.getEdges()) {
-                
-            }
-        }
     }
 }
