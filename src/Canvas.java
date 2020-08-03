@@ -13,14 +13,7 @@ public class Canvas {
 
     public static void generate(int height, int width, List<Triangle> triangles) {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
-        for (int y = 0; y < height; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                int rgb = 0xFFFFFF; // white
-                image.setRGB(x, y, rgb);
-            }
-        }
+
         try {
             ImageIO.write(image, "png", new File("image.png"));
         }
@@ -38,7 +31,7 @@ public class Canvas {
 
     public static void drawTriangles(List<Triangle> triangles, Graphics g) {
         for (Triangle triangle : triangles) {
-            g.drawPolygon(triangle.getXs(), triangle.getYs(), 3);
+            g.drawPolyline(triangle.getXs(), triangle.getYs(), 3);
         }
     }
 }
