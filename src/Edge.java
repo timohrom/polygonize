@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Edge {
     private Coordinate start;
     private Coordinate end;
@@ -37,5 +39,20 @@ public class Edge {
 
     public Coordinate getEnd() {
         return end;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Coordinate)) return false;
+
+        Edge edge = (Edge) o;
+        return ((start.getX() == edge.getStart().getX()) && (start.getY() == edge.getStart().getY())) &&
+                ((end.getX() == edge.getEnd().getX()) && (end.getY() == edge.getEnd().getY()));
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(start, end);
     }
 }

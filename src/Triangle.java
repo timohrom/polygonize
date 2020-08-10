@@ -83,6 +83,20 @@ public class Triangle {
         return edges;
     }
 
+    /**
+     * Auxilliary method which checks if a triangle contains a given edge
+     *
+     * @param edge, the edge to be checked
+     * @return true, if the paramterized edge is in the triangle
+     */
+    public boolean containsEdge(Edge edge) {
+        for (int i=0; i<3; i++) {
+            if (getEdges()[i].equals(edge)) return true;
+        }
+        //no match found
+        return false;
+    }
+
     public int[] getXs() {
         int[] xVals = new int[3];
         xVals[0] = A.getX();

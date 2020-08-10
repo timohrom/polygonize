@@ -38,9 +38,18 @@ public class Triangulization {
         Set<Triangle> triangulation = new HashSet<Triangle>();
         triangulation.add(createSuperTriangle());
         for (Coordinate coord : pointList) {
-            HashSet<Triangle> badTriangles = new HashSet<>();
+            Set<Triangle> badTriangles = new HashSet<>();
             for (Triangle triangle : triangulation) {
                 if (triangle.isInside(coord)) {
+                    badTriangles.add(triangle);
+                }
+            }
+            Set<Polygon> polygon = new HashSet<Polygon>();
+            for (Triangle triangle : badTriangles) {
+                for (Edge edge : triangle.getEdges()) {
+                    for (Triangle triangleLooper : badTriangles) {
+                        if (!triangleLooper.containsEdge(edge)) return 
+                    }
                 }
             }
         }
